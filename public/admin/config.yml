@@ -1,8 +1,7 @@
 backend:
   name: github
-  repo: votre-nom/votre-repo # Remplacez par votre nom d'utilisateur/nom du repo
-  branch: main
-  # Supprimez les lignes auth_scope, base_url et auth_endpoint si elles existent
+  repo: [RealChuckMaurice]/[V26] # Remplacez par le vrai nom de votre dépôt
+  branch: main # ou master si c'est votre branche principale
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
