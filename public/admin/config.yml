@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: [RealChuckMaurice]/[V26] # Remplacez par le vrai nom de votre dépôt
+  repo: RealChuckMaurice/V26 # Remplacez par le vrai nom de votre dépôt
   branch: main # ou master si c'est votre branche principale
 
 media_folder: "public/images/uploads"
