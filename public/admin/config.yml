@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: votre-nom/votre-repo # Remplacez par votre nom d'utilisateur/nom du repo
   branch: main
+  # Supprimez les lignes auth_scope, base_url et auth_endpoint si elles existent
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
