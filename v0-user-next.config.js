@@ -5,6 +5,7 @@ const nextConfig = {
     unoptimized: true,
   },
   reactStrictMode: false,
+  distDir: ".next",
 }
 
 module.exports = nextConfig
