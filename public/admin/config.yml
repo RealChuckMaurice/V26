@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "publications"
+    label: "Publications"
+    folder: "content/publications"
+    create: true
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["Livre", "Monographie", "Essai", "Article", "Catalogue"] }
+      - { label: "Année", name: "year", widget: "string" }
+      - { label: "Extrait", name: "excerpt", widget: "text" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Image", name: "image", widget: "image" }
+
+  - name: "actualites"
+    label: "Actualités"
+    folder: "content/actualites"
+    create: true
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Lieu", name: "location", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+
