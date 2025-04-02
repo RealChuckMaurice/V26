@@ -1,9 +1,7 @@
 backend:
-  name: auth0
-  base_url: https://polyptyque.netlify.app
-  auth_endpoint: auth
-  client_id: Cx93quq00Iu6jcPFPROHyvsIcCTdw0nV
-  domain: dev-ajjn4pjug7fxfgw0.us.auth0.com
+  name: github
+  repo: RealChuckMaurice/V26
+  branch: main
 
 media_folder: public/images
 public_folder: /images
