@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: static/images
+media_folder: public/images
 public_folder: /images
 
 collections:
@@ -27,3 +27,14 @@ collections:
       - { label: "Image", name: "thumbnail", widget: "image" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Contenu", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "accueil"
+        label: "Page d'accueil"
+        file: "content/pages/accueil.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
