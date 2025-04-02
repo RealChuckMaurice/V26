@@ -1,7 +1,6 @@
 backend:
-  name: auth0
-  base_url: https://polyptyque.netlify.app
-  auth_endpoint: auth
+  name: git-gateway
+  branch: main
 
 media_folder: public/images
 public_folder: /images
