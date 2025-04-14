@@ -71,4 +71,3 @@ export function getContentItemBySlug(directory: string, slug: string) {
     return null
   }
 }
-

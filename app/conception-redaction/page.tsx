@@ -1,223 +1,112 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Check, Edit, FileText, PenTool } from "lucide-react"
-
-export default function ConceptionRedaction() {
-  const services = [
-    {
-      title: "Rédaction de contenus",
-      description:
-        "Création de textes spécialisés pour catalogues d'exposition, monographies, et autres publications artistiques.",
-      icon: <PenTool className="h-10 w-10 text-secondary" />,
-      examples: [
-        "Textes critiques pour catalogues d'exposition",
-        "Essais pour monographies d'artistes",
-        "Analyses d'œuvres et de mouvements artistiques",
-      ],
-    },
-    {
-      title: "Direction éditoriale",
-      description: "Coordination et supervision de projets éditoriaux complexes, de la conception à la publication.",
-      icon: <Edit className="h-10 w-10 text-secondary" />,
-      examples: [
-        "Direction d'ouvrages collectifs",
-        "Coordination de catalogues d'exposition",
-        "Supervision de collections éditoriales",
-      ],
-    },
-    {
-      title: "Conception de publications",
-      description: "Élaboration de concepts éditoriaux innovants pour institutions culturelles et maisons d'édition.",
-      icon: <FileText className="h-10 w-10 text-secondary" />,
-      examples: [
-        "Conception de formats éditoriaux",
-        "Élaboration de lignes éditoriales",
-        "Création de collections thématiques",
-      ],
-    },
-  ]
-
-  const projects = [
-    {
-      title: "Catalogue d'exposition 'Art contemporain africain'",
-      client: "Centre Pompidou",
-      year: "2022",
-      description:
-        "Direction éditoriale et rédaction de textes pour ce catalogue majeur présentant la scène artistique contemporaine africaine.",
-      image: "https://placehold.co/800x600/3F2305/ffffff",
-    },
-    {
-      title: "Collection 'Designers du XXIe siècle'",
-      client: "Éditions Flammarion",
-      year: "2019-2023",
-      description:
-        "Conception et direction d'une collection de monographies consacrées aux designers contemporains majeurs.",
-      image: "https://placehold.co/800x600/A64B2A/ffffff",
-    },
-    {
-      title: "Revue trimestrielle 'Perspectives'",
-      client: "Fondation Cartier",
-      year: "2020-2023",
-      description:
-        "Conception éditoriale et rédaction pour cette revue explorant les tendances actuelles de l'art contemporain.",
-      image: "https://placehold.co/800x600/D7A86E/ffffff",
-    },
-  ]
-
+export default function ConceptionRedactionPage() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="bg-accent/30 py-12">
-        <div className="container-custom">
-          <div className="max-w-3xl fade-in">
-            <h1 className="text-4xl md:text-5xl font-serif mb-3">Conception & Rédaction</h1>
-            <p className="text-xl text-muted-foreground italic">
-              Expertise éditoriale au service des institutions culturelles, maisons d'édition et revues spécialisées.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-6">Conception & Rédaction</h1>
+      <p className="text-lg text-gray-600 mb-16">
+        Expertise éditoriale au service des institutions culturelles, maisons d'édition et revues spécialisées.
+      </p>
 
-      {/* Services Section */}
-      <section className="py-20 bg-background">
-        <div className="container-custom">
-          <div className="text-center mb-16 slide-up">
-            <h2 className="text-3xl md:text-4xl font-serif mb-4">Nos services éditoriaux</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Une expertise complète pour vos projets éditoriaux dans le domaine de l'art et du design.
-            </p>
-          </div>
+      <section className="mb-20">
+        <h2 className="text-3xl font-semibold text-center mb-6">Nos services éditoriaux</h2>
+        <p className="text-center mb-12 max-w-3xl mx-auto">
+          Une expertise complète pour vos projets éditoriaux dans le domaine de l'art et du design.
+        </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card
-                key={index}
-                className="border-none shadow-lg slide-up h-full"
-                style={{ animationDelay: `${index * 100}ms` }}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Colonne 1 */}
+          <div className="border p-6 rounded-lg">
+            <div className="flex justify-center mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-12 w-12 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <CardContent className="p-6">
-                  <div className="flex justify-center mb-6">{service.icon}</div>
-                  <h3 className="text-xl font-serif mb-4 text-center">{service.title}</h3>
-                  <p className="text-muted-foreground mb-6 text-center">{service.description}</p>
-                  <div className="space-y-3">
-                    {service.examples.map((example, i) => (
-                      <div key={i} className="flex items-start">
-                        <Check className="h-5 w-5 mr-2 text-secondary flex-shrink-0 mt-0.5" />
-                        <span>{example}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-20 bg-accent/30">
-        <div className="container-custom">
-          <div className="text-center mb-16 slide-up">
-            <h2 className="text-3xl md:text-4xl font-serif mb-4">Notre processus</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Une méthodologie éprouvée pour des projets éditoriaux de qualité.
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-center mb-4">Rédaction de contenus</h3>
+            <p className="text-center mb-6">
+              Création de textes spécialisés pour catalogues d'exposition, monographies, et autres publications
+              artistiques.
             </p>
+            <ul className="space-y-2">
+              <li>Textes critiques pour catalogues d'exposition</li>
+              <li>Essais pour monographies d'artistes</li>
+              <li>Analyses d'œuvres et de mouvements artistiques</li>
+            </ul>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              {
-                number: "01",
-                title: "Consultation",
-                description: "Échange approfondi pour comprendre vos objectifs, votre public cible et vos contraintes.",
-              },
-              {
-                number: "02",
-                title: "Conception",
-                description: "Élaboration d'un concept éditorial adapté à votre projet et à vos ambitions.",
-              },
-              {
-                number: "03",
-                title: "Création",
-                description: "Rédaction de contenus de qualité, alliant rigueur intellectuelle et accessibilité.",
-              },
-              {
-                number: "04",
-                title: "Finalisation",
-                description: "Révision, édition et préparation des textes pour la publication.",
-              },
-            ].map((step, index) => (
-              <Card
-                key={index}
-                className="border-none shadow-lg slide-up h-full"
-                style={{ animationDelay: `${index * 100}ms` }}
+          {/* Colonne 2 */}
+          <div className="border p-6 rounded-lg">
+            <div className="flex justify-center mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-12 w-12 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <CardContent className="p-6">
-                  <div className="text-4xl font-bold text-secondary mb-4">{step.number}</div>
-                  <h3 className="text-xl font-serif mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="py-20 bg-background">
-        <div className="container-custom">
-          <div className="text-center mb-16 slide-up">
-            <h2 className="text-3xl md:text-4xl font-serif mb-4">Projets récents</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Découvrez quelques exemples de nos réalisations éditoriales.
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-center mb-4">Direction éditoriale</h3>
+            <p className="text-center mb-6">
+              Coordination et supervision de projets éditoriaux complexes, de la conception à la publication.
             </p>
+            <ul className="space-y-2">
+              <li>Direction d'ouvrages collectifs</li>
+              <li>Coordination de catalogues d'exposition</li>
+              <li>Supervision de collections éditoriales</li>
+            </ul>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card
-                key={index}
-                className="border-none shadow-lg overflow-hidden slide-up h-full"
-                style={{ animationDelay: `${index * 100}ms` }}
+          {/* Colonne 3 */}
+          <div className="border p-6 rounded-lg">
+            <div className="flex justify-center mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-12 w-12 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <div className="relative h-64">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-serif">{project.title}</h3>
-                    <span className="text-sm text-secondary font-medium">{project.year}</span>
-                  </div>
-                  <p className="text-sm font-medium text-secondary mb-3">Client: {project.client}</p>
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-center mb-4">Conception de publications</h3>
+            <p className="text-center mb-6">
+              Élaboration de concepts éditoriaux innovants pour institutions culturelles et maisons d'édition.
+            </p>
+            <ul className="space-y-2">
+              <li>Conception de formats éditoriaux</li>
+              <li>Élaboration de lignes éditoriales</li>
+              <li>Création de collections thématiques</li>
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center slide-up">
-            <h2 className="text-3xl md:text-4xl font-serif mb-6">Prêt à démarrer votre projet éditorial?</h2>
-            <p className="text-lg text-primary-foreground/90 mb-8">
-              Contactez-moi pour discuter de vos besoins en conception et rédaction de contenus spécialisés dans l'art
-              et le design.
-            </p>
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/a-propos#contact">Prendre contact</Link>
-            </Button>
-          </div>
-        </div>
+      <section>
+        <h2 className="text-3xl font-semibold text-center mb-12">Notre processus</h2>
+        {/* Contenu du processus */}
       </section>
-    </>
+    </div>
   )
 }
-

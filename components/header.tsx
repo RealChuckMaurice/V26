@@ -8,28 +8,22 @@ export default function Header() {
         <Logo />
 
         <nav className="hidden md:flex space-x-8">
-          <Link href="/livres" className="font-oswald text-gray-800 hover:text-blue-600 transition-colors">
+          <Link href="/livres" className="text-gray-800 hover:text-blue-600 transition-colors">
             Livres
           </Link>
-          <Link href="/presse" className="font-oswald text-gray-800 hover:text-blue-600 transition-colors">
+          <Link href="/presse" className="text-gray-800 hover:text-blue-600 transition-colors">
             Presse
           </Link>
-          <Link
-            href="/conception-redaction"
-            className="font-oswald text-gray-800 hover:text-blue-600 transition-colors"
-          >
+          <Link href="/conception-redaction" className="text-gray-800 hover:text-blue-600 transition-colors">
             Conception Rédaction
           </Link>
-          <Link
-            href="/conseil-en-acquisition"
-            className="font-oswald text-gray-800 hover:text-blue-600 transition-colors"
-          >
+          <Link href="/conseil-acquisition" className="text-gray-800 hover:text-blue-600 transition-colors">
             Conseil en acquisition
           </Link>
-          <Link href="/prestations" className="font-oswald text-gray-800 hover:text-blue-600 transition-colors">
+          <Link href="/prestations" className="text-gray-800 hover:text-blue-600 transition-colors">
             Prestations
           </Link>
-          <Link href="/a-propos" className="font-oswald text-gray-800 hover:text-blue-600 transition-colors">
+          <Link href="/a-propos" className="text-gray-800 hover:text-blue-600 transition-colors">
             À propos
           </Link>
         </nav>
@@ -52,4 +46,3 @@ export default function Header() {
     </header>
   )
 }
-

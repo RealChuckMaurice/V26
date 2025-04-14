@@ -22,4 +22,3 @@ export default function Logo({ className = "", color = "#000000" }: LogoProps) {
     </Link>
   )
 }
-

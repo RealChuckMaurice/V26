@@ -1,21 +1,13 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { Oswald, Inter } from "next/font/google"
+import { Inter } from "next/font/google"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
-// Charger les polices
-const oswald = Oswald({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-oswald",
-  display: "swap",
-})
-
+// Charger la police Inter pour le site
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
   display: "swap",
 })
 
@@ -31,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${oswald.variable} ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col">
+    <html lang="fr">
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
         <Header />
         <div className="flex-grow">{children}</div>
         <Footer />
@@ -40,7 +32,6 @@ export default function RootLayout({
     </html>
   )
 }
-
 
 
 import './globals.css'
