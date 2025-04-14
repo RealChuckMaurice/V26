@@ -1,41 +1,117 @@
 backend:
   name: github
-  repo: RealChuckMaurice/V26
+  repo: votre-nom/votre-repo # Assurez-vous de mettre le bon nom de repo
   branch: main
 
-media_folder: public/images
-public_folder: /images
+media_folder: "public/images"
+public_folder: "/images"
 
 collections:
+  # Paramètres globaux
+  - name: "settings"
+    label: "Paramètres du site"
+    files:
+      - name: "navigation"
+        label: "Navigation"
+        file: "content/settings/navigation.json"
+        fields:
+          - label: "Menu principal"
+            name: "mainMenu"
+            widget: "list"
+            fields:
+              - {label: "Texte", name: "text", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+      
+      - name: "metadata"
+        label: "Métadonnées du site"
+        file: "content/settings/metadata.json"
+        fields:
+          - {label: "Titre du site", name: "siteTitle", widget: "string"}
+          - {label: "Description", name: "siteDescription", widget: "text"}
+          - {label: "Image par défaut", name: "defaultImage", widget: "image", required: false}
+  
+  # Livres
   - name: "livres"
     label: "Livres"
     folder: "content/livres"
     create: true
+    slug: "{{year}}-{{slug}}"
     fields:
-      - { label: "Titre", name: "title", widget: "string" }
-      - { label: "Date de publication", name: "date", widget: "datetime" }
-      - { label: "Image de couverture", name: "thumbnail", widget: "image" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Contenu", name: "body", widget: "markdown" }
-
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Auteur", name: "author", widget: "string"}
+      - {label: "Année", name: "year", widget: "string"}
+      - {label: "Éditeur", name: "publisher", widget: "string", required: false}
+      - {label: "Description", name: "description", widget: "markdown"}
+      - {label: "Image de couverture", name: "coverImage", widget: "image"}
+      - {label: "Date de publication", name: "date", widget: "datetime"}
+      - {label: "Mis en avant", name: "featured", widget: "boolean", default: false}
+  
+  # Presse
   - name: "presse"
     label: "Presse"
     folder: "content/presse"
     create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
     fields:
-      - { label: "Titre", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Image", name: "thumbnail", widget: "image" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Contenu", name: "body", widget: "markdown" }
-
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Publication", name: "publication", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Extrait", name: "excerpt", widget: "text"}
+      - {label: "Contenu", name: "content", widget: "markdown", required: false}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Lien externe", name: "externalLink", widget: "string", required: false}
+  
+  # Pages
   - name: "pages"
     label: "Pages"
     files:
-      - name: "accueil"
+      - name: "home"
         label: "Page d'accueil"
-        file: "content/pages/accueil.md"
+        file: "content/pages/home.json"
         fields:
-          - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Contenu", name: "body", widget: "markdown" }
+          - {label: "Titre principal", name: "title", widget: "string"}
+          - {label: "Sous-titre", name: "subtitle", widget: "string"}
+          - label: "Boutons d'action"
+            name: "ctaButtons"
+            widget: "list"
+            fields:
+              - {label: "Texte", name: "text", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Style", name: "style", widget: "select", options: ["primary", "secondary"], default: "primary"}
+      
+      - name: "conseil-acquisition"
+        label: "Conseil en acquisition"
+        file: "content/pages/conseil-acquisition.json"
+        fields:
+          - {label: "Titre", name: "title", widget: "string"}
+          - {label: "Sous-titre", name: "subtitle", widget: "string"}
+          - {label: "Contenu", name: "content", widget: "markdown"}
+      
+      - name: "conception-redaction"
+        label: "Conception Rédaction"
+        file: "content/pages/conception-redaction.json"
+        fields:
+          - {label: "Titre", name: "title", widget: "string"}
+          - {label: "Contenu", name: "content", widget: "markdown"}
+      
+      - name: "prestations"
+        label: "Prestations"
+        file: "content/pages/prestations.json"
+        fields:
+          - {label: "Titre", name: "title", widget: "string"}
+          - {label: "Introduction", name: "intro", widget: "markdown"}
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - {label: "Titre", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+      
+      - name: "about"
+        label: "À propos"
+        file: "content/pages/about.json"
+        fields:
+          - {label: "Titre", name: "title", widget: "string"}
+          - {label: "Contenu", name: "content", widget: "markdown"}
+          - {label: "Image", name: "image", widget: "image", required: false}
+
