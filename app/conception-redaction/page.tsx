@@ -1,10 +1,17 @@
+import { getJsonData } from "@/lib/content"
+
 export default function ConceptionRedactionPage() {
+  const pageData = getJsonData("content/pages/conception-redaction.json")
+
+  const title = pageData.title || "Conception & Rédaction"
+  const content =
+    pageData.content ||
+    "Expertise éditoriale au service des institutions culturelles, maisons d'édition et revues spécialisées."
+
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-6">Conception & Rédaction</h1>
-      <p className="text-lg text-gray-600 mb-16">
-        Expertise éditoriale au service des institutions culturelles, maisons d'édition et revues spécialisées.
-      </p>
+      <h1 className="text-4xl font-bold mb-6">{title}</h1>
+      <p className="text-lg text-gray-600 mb-16">{content}</p>
 
       <section className="mb-20">
         <h2 className="text-3xl font-semibold text-center mb-6">Nos services éditoriaux</h2>

@@ -1,18 +1,22 @@
+import { getJsonData } from "@/lib/content"
+import Markdown from "react-markdown"
+
 export default function ConseilAcquisitionPage() {
+  const pageData = getJsonData("content/pages/conseil-acquisition.json")
+
+  const title = pageData.title || "Conseil en acquisition d'Art Moderne et Contemporain"
+  const subtitle =
+    pageData.subtitle || "Expertise et accompagnement personnalisé pour vos projets d'acquisition d'œuvres d'art."
+  const content = pageData.content || ""
+
   return (
     <div className="relative">
       {/* Hero section */}
       <div className="bg-gray-400 py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Conseil en acquisition d'Art
-            <br />
-            Moderne et Contemporain
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h1>
           <div className="max-w-2xl">
-            <p className="text-xl text-white mb-8">
-              Expertise et accompagnement personnalisé pour vos projets d'acquisition d'œuvres d'art.
-            </p>
+            <p className="text-xl text-white mb-8">{subtitle}</p>
             <button className="bg-white text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
               Découvrir nos services
             </button>
@@ -20,6 +24,15 @@ export default function ConseilAcquisitionPage() {
         </div>
         <div className="absolute right-0 bottom-0 text-[20vw] font-bold text-gray-800 opacity-20 z-0">Contemporain</div>
       </div>
+
+      {/* Content section */}
+      {content && (
+        <div className="container mx-auto px-4 py-12">
+          <div className="prose max-w-none">
+            <Markdown>{content}</Markdown>
+          </div>
+        </div>
+      )}
 
       {/* Services section */}
       <div className="container mx-auto px-4 py-16">

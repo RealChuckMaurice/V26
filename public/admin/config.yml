@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: RealChuckMaurice/V26 # Remplacez par votre nom d'utilisateur GitHub et le nom du repo
+  repo: votre-nom-utilisateur/polyptyque # Remplacez par votre nom d'utilisateur GitHub et le nom du repo
   branch: main # ou master si c'est votre branche principale
+  auth_scope: repo # Needed for private repos
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

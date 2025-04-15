@@ -1,31 +1,30 @@
 import Link from "next/link"
 import Logo from "@/components/ui/logo"
+import { getJsonData } from "@/lib/content"
 
 export default function Header() {
+  // Get navigation data
+  const navData = getJsonData("content/settings/navigation.json")
+  const mainMenu = navData.mainMenu || [
+    { text: "Livres", url: "/livres" },
+    { text: "Presse", url: "/presse" },
+    { text: "Conception Rédaction", url: "/conception-redaction" },
+    { text: "Conseil en acquisition", url: "/conseil-acquisition" },
+    { text: "Prestations", url: "/prestations" },
+    { text: "À propos", url: "/a-propos" },
+  ]
+
   return (
     <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Logo />
 
         <nav className="hidden md:flex space-x-8">
-          <Link href="/livres" className="text-gray-800 hover:text-blue-600 transition-colors">
-            Livres
-          </Link>
-          <Link href="/presse" className="text-gray-800 hover:text-blue-600 transition-colors">
-            Presse
-          </Link>
-          <Link href="/conception-redaction" className="text-gray-800 hover:text-blue-600 transition-colors">
-            Conception Rédaction
-          </Link>
-          <Link href="/conseil-acquisition" className="text-gray-800 hover:text-blue-600 transition-colors">
-            Conseil en acquisition
-          </Link>
-          <Link href="/prestations" className="text-gray-800 hover:text-blue-600 transition-colors">
-            Prestations
-          </Link>
-          <Link href="/a-propos" className="text-gray-800 hover:text-blue-600 transition-colors">
-            À propos
-          </Link>
+          {mainMenu.map((item, index) => (
+            <Link key={index} href={item.url} className="text-gray-800 hover:text-blue-600 transition-colors">
+              {item.text}
+            </Link>
+          ))}
         </nav>
 
         <div className="md:hidden">
