@@ -1,5 +1,4 @@
 import { getContentItems } from "@/lib/content"
-import Link from "next/link"
 
 export default function PressePage() {
   const articles = getContentItems("content/presse")
@@ -32,9 +31,7 @@ export default function PressePage() {
                     Lire l'article original
                   </a>
                 ) : (
-                  <Link href={`/presse/${article.slug}`} className="text-blue-600 hover:underline">
-                    Lire l'article
-                  </Link>
+                  <p className="text-blue-600">Lire l'article</p>
                 )}
               </div>
             </div>

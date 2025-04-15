@@ -1,5 +1,6 @@
 import { getJsonData } from "@/lib/content"
 import Markdown from "react-markdown"
+import Link from "next/link"
 
 export default function ConseilEnAcquisitionPage() {
   const pageData = getJsonData("content/pages/conseil-acquisition.json")
@@ -17,9 +18,12 @@ export default function ConseilEnAcquisitionPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h1>
           <div className="max-w-2xl">
             <p className="text-xl text-white mb-8">{subtitle}</p>
-            <button className="bg-white text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
+            <Link
+              href="#services"
+              className="bg-white text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
+            >
               Découvrir nos services
-            </button>
+            </Link>
           </div>
         </div>
         <div className="absolute right-0 bottom-0 text-[20vw] font-bold text-gray-800 opacity-20 z-0">Contemporain</div>
@@ -35,7 +39,7 @@ export default function ConseilEnAcquisitionPage() {
       )}
 
       {/* Services section */}
-      <div className="container mx-auto px-4 py-16">
+      <div id="services" className="container mx-auto px-4 py-16">
         <h2 className="text-3xl font-semibold text-center mb-12">Nos services de conseil</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

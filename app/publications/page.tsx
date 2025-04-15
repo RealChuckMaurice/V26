@@ -1,5 +1,4 @@
 import { getContentItems } from "@/lib/content"
-import Link from "next/link"
 
 export default function PublicationsPage() {
   const publications = getContentItems("content/publications")
@@ -28,9 +27,7 @@ export default function PublicationsPage() {
                 <p className="text-gray-600 mb-1">{publication.type}</p>
                 <p className="text-gray-600 mb-4">{publication.year}</p>
                 <div className="line-clamp-3 text-sm text-gray-700 mb-4">{publication.excerpt}</div>
-                <Link href={`/publications/${publication.slug}`} className="text-blue-600 hover:underline">
-                  En savoir plus
-                </Link>
+                <p className="text-blue-600">En savoir plus</p>
               </div>
             </div>
           ))}

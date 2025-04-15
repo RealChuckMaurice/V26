@@ -1,5 +1,4 @@
 import { getContentItems } from "@/lib/content"
-import Link from "next/link"
 
 export default function LivresPage() {
   const livres = getContentItems("content/livres")
@@ -30,9 +29,7 @@ export default function LivresPage() {
                   {livre.year} - {livre.publisher}
                 </p>
                 <div className="line-clamp-3 text-sm text-gray-700 mb-4">{livre.description.substring(0, 150)}...</div>
-                <Link href={`/livres/${livre.slug}`} className="text-blue-600 hover:underline">
-                  En savoir plus
-                </Link>
+                <p className="text-blue-600">En savoir plus</p>
               </div>
             </div>
           ))}
