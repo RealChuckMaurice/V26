@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Logo from "@/components/ui/logo"
 import { getJsonData } from "@/lib/content"
+import LanguageSelector from "@/components/language-selector"
 
 export default function Header() {
   // Get navigation data
@@ -19,13 +20,17 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Logo />
 
-        <nav className="hidden md:flex space-x-8">
-          {mainMenu.map((item, index) => (
-            <Link key={index} href={item.url} className="text-gray-800 hover:text-blue-600 transition-colors">
-              {item.text}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex items-center">
+          <nav className="hidden md:flex space-x-8 mr-6">
+            {mainMenu.map((item, index) => (
+              <Link key={index} href={item.url} className="text-gray-800 hover:text-blue-600 transition-colors">
+                {item.text}
+              </Link>
+            ))}
+          </nav>
+
+          <LanguageSelector />
+        </div>
 
         <div className="md:hidden">
           {/* Menu mobile ici */}

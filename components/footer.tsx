@@ -14,9 +14,6 @@ export default function Footer() {
             <Link href="/mentions-legales" className="text-gray-600 hover:text-blue-600 transition-colors">
               Mentions légales
             </Link>
-            <Link href="/politique-de-confidentialite" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Politique de confidentialité
-            </Link>
           </div>
         </div>
       </div>
