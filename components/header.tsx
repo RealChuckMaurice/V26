@@ -1,7 +1,6 @@
 import Link from "next/link"
 import Logo from "@/components/ui/logo"
 import { getJsonData } from "@/lib/content"
-import LanguageSelector from "@/components/language-selector"
 
 export default function Header() {
   // Get navigation data
@@ -29,7 +28,16 @@ export default function Header() {
             ))}
           </nav>
 
-          <LanguageSelector />
+          {/* Sélecteur de langue simple */}
+          <div className="border border-gray-300 rounded px-2 py-1 flex items-center space-x-2">
+            <Link href="/" className="font-medium">
+              FR
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/en" className="text-gray-500 hover:text-gray-700">
+              EN
+            </Link>
+          </div>
         </div>
 
         <div className="md:hidden">

@@ -2,27 +2,37 @@ const fs = require("fs")
 const path = require("path")
 
 function findDynamicRoutes(dir, results = []) {
+  if (!fs.existsSync(dir)) return results
+
   const files = fs.readdirSync(dir)
 
   for (const file of files) {
-    const filePath = path.join(dir, file)
-    const stat = fs.statSync(filePath)
+    const fullPath = path.join(dir, file)
+    const stat = fs.statSync(fullPath)
 
     if (stat.isDirectory()) {
       // Check if this is a dynamic route directory
       if (file.startsWith("[") && file.endsWith("]")) {
         const paramName = file.slice(1, -1)
-        const parentDir = path.dirname(filePath)
-
         results.push({
-          path: filePath,
+          path: fullPath,
           paramName,
-          parentDir,
+          type: "directory",
         })
       }
 
-      // Recursively search subdirectories
-      findDynamicRoutes(filePath, results)
+      // Continue searching in subdirectories
+      findDynamicRoutes(fullPath, results)
+    } else if (file.endsWith(".js") || file.endsWith(".jsx") || file.endsWith(".ts") || file.endsWith(".tsx")) {
+      // Check file content for dynamic route references
+      const content = fs.readFileSync(fullPath, "utf8")
+      if (content.includes("[id]") || content.includes("params.id")) {
+        results.push({
+          path: fullPath,
+          type: "file",
+          containsIdParam: true,
+        })
+      }
     }
   }
 
@@ -32,38 +42,23 @@ function findDynamicRoutes(dir, results = []) {
 // Start the search from the current directory
 const dynamicRoutes = findDynamicRoutes(".")
 
-// Group routes by parent directory to find conflicts
-const routesByParent = {}
+console.log("Dynamic routes found:")
 dynamicRoutes.forEach((route) => {
-  if (!routesByParent[route.parentDir]) {
-    routesByParent[route.parentDir] = []
+  if (route.type === "directory") {
+    console.log(`Directory: ${route.path} (param: ${route.paramName})`)
+  } else {
+    console.log(`File: ${route.path}${route.containsIdParam ? " (contains id parameter)" : ""}`)
   }
-  routesByParent[route.parentDir].push(route)
 })
 
 // Check for conflicts
-console.log("All dynamic routes:")
-dynamicRoutes.forEach((route) => {
-  console.log(`- ${route.path} (param: ${route.paramName})`)
-})
+const directoryRoutes = dynamicRoutes.filter((route) => route.type === "directory")
+const paramNames = new Set(directoryRoutes.map((route) => route.paramName))
 
-console.log("\nPotential conflicts:")
-let hasConflicts = false
-Object.entries(routesByParent).forEach(([parentDir, routes]) => {
-  if (routes.length > 1) {
-    const paramNames = routes.map((r) => r.paramName)
-    const uniqueParams = new Set(paramNames)
-
-    if (uniqueParams.size > 1) {
-      console.log(`\nConflict in ${parentDir}:`)
-      routes.forEach((route) => {
-        console.log(`- ${path.basename(route.path)} (param: ${route.paramName})`)
-      })
-      hasConflicts = true
-    }
-  }
-})
-
-if (!hasConflicts) {
-  console.log("No conflicts found.")
+if (paramNames.size > 1) {
+  console.log("\nWARNING: Multiple parameter names found:")
+  Array.from(paramNames).forEach((param) => {
+    console.log(`- ${param}`)
+  })
+  console.log('\nThis may cause conflicts. Consider using a consistent parameter name like "slug".')
 }

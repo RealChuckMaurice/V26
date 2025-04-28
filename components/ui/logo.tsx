@@ -10,15 +10,12 @@ const oswald = Oswald({
 
 interface LogoProps {
   className?: string
-  color?: string
 }
 
-export default function Logo({ className = "", color = "#000000" }: LogoProps) {
+export default function Logo({ className = "" }: LogoProps) {
   return (
     <Link href="/" className={`inline-block ${className}`}>
-      <span className={`${oswald.className} text-2xl tracking-wider`} style={{ color }}>
-        polyptyque
-      </span>
+      <span className={`${oswald.className} text-2xl tracking-wider`}>polyptyque</span>
     </Link>
   )
 }
