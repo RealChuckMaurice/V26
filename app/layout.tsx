@@ -2,8 +2,6 @@ import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 
 // Charger la police Inter pour le site
 const inter = Inter({
@@ -25,13 +23,18 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <Header />
+        <header className="bg-white shadow-sm p-4">
+          <div className="container mx-auto">
+            <h1 className="text-2xl font-bold">Polyptyque</h1>
+          </div>
+        </header>
         <div className="flex-grow">{children}</div>
-        <Footer />
+        <footer className="bg-gray-100 p-4">
+          <div className="container mx-auto text-center text-gray-600">
+            &copy; {new Date().getFullYear()} Polyptyque. Tous droits réservés.
+          </div>
+        </footer>
       </body>
     </html>
   )
 }
-
-
-import './globals.css'
